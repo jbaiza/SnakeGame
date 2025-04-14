@@ -67,13 +67,13 @@ def new_position(snake_position):
     direction = snake_position[2]
     # EDIT: Here need to change if would like to achieve that snake appears on the opposite side of the game field
     if direction == 0:
-        y -= speed
+        y = round(y - speed, 4)
     elif direction == 1:
-        x -= speed
+        x = round(x - speed, 4)
     elif direction == 2:
-        y += speed
+        y = round(y + speed, 4)
     elif direction == 3:
-        x += speed
+        x = round(x + speed, 4)
     return [x, y]
 
 
@@ -135,16 +135,16 @@ def check_change_direction(snake_positions, change_direction):
 
 
 def get_change_direction(keys, snake_direction):
-    change_direction = -1
+    change = -1
     if keys[0] and snake_direction != 0 and snake_direction != 2:
-        change_direction = 0
+        change = 0
     elif keys[2] and snake_direction != 2 and snake_direction != 0:
-        change_direction = 2
+        change = 2
     if keys[1] and snake_direction != 1 and snake_direction != 3:
-        change_direction = 1
+        change = 1
     elif keys[3] and snake_direction != 3 and snake_direction != 1:
-        change_direction = 3
-    return change_direction
+        change = 3
+    return change
 
 
 def process_events(keys):
